@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace OneArmedBandit
 {
@@ -24,54 +25,65 @@ namespace OneArmedBandit
             InitializeComponent();
         }
 
-        private void spinButton_Click(object sender, EventArgs e) 
+        private void spinButton_Click(object sender, EventArgs e)
         {
             // get random values for each reel (store each in separate int variable)
-            reel1Num = randGen.Next(1, 4);
-            reel2Num = randGen.Next(1, 4);
-            reel3Num = randGen.Next(1, 4);
+            int delay = 100;
+
+            for (int x = 1; x <= 10; x++)
+            {
+                reel1Num = randGen.Next(1, 4);
+                reel2Num = randGen.Next(1, 4);
+                reel3Num = randGen.Next(1, 4);
+                switch (reel1Num)
+                {
+                    case 1:
+                        reel1.Image = Properties.Resources.cherry_100x125;
+                        break;
+                    case 2:
+                        reel1.Image = Properties.Resources.diamond_100x125;
+                        break;
+                    case 3:
+                        reel1.Image = Properties.Resources._7_100x125;
+                        break;
+                }
+                switch (reel2Num)
+                {
+                    case 1:
+                        reel2.Image = Properties.Resources.cherry_100x125;
+                        break;
+                    case 2:
+                        reel2.Image = Properties.Resources.diamond_100x125;
+                        break;
+                    case 3:
+                        reel2.Image = Properties.Resources._7_100x125;
+                        break;
+                }
+                switch (reel3Num)
+                {
+                    case 1:
+                        reel3.Image = Properties.Resources.cherry_100x125;
+                        break;
+                    case 2:
+                        reel3.Image = Properties.Resources.diamond_100x125;
+                        break;
+                    case 3:
+                        reel3.Image = Properties.Resources._7_100x125;
+                        break;
+                }
+                this.Refresh();
+                Thread.Sleep(delay);
+                delay = delay + 50;
+            }
 
             // check value of reel 1 with a switch statement and set appropriate image
-            switch (reel1Num)
-            {
-                case 1:
-                    reel1.Image = Properties.Resources.cherry_100x125;
-                    break;
-                case 2:
-                    reel1.Image = Properties.Resources.diamond_100x125;
-                    break;
-                case 3:
-                    reel1.Image = Properties.Resources._7_100x125;
-                        break;
-            }
+
 
             // check value of reel 2 with a switch statement and set appropriate image
-            switch (reel2Num)
-            {
-                case 1:
-                    reel2.Image = Properties.Resources.cherry_100x125;
-                    break;
-                case 2:
-                    reel2.Image = Properties.Resources.diamond_100x125;
-                    break;
-                case 3:
-                    reel2.Image = Properties.Resources._7_100x125;
-                        break;
-            }
+
 
             // check value of reel 3 with a switch statement and set appropriate image
-            switch (reel3Num)
-            {
-                case 1:
-                    reel3.Image = Properties.Resources.cherry_100x125;
-                    break;
-                case 2:
-                    reel3.Image = Properties.Resources.diamond_100x125;
-                    break;
-                case 3:
-                    reel3.Image = Properties.Resources._7_100x125;
-                        break;
-            }
+
 
             /// STOP HERE ----------------------------------------------------------
             /// Test to make sure that your program will display random
